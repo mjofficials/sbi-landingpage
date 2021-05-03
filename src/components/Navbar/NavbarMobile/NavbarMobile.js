@@ -8,7 +8,7 @@ import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
 
 const useStyles = makeStyles({
   drawer: {
-    width: "250px",
+    width: "300px",
   },
 });
 
@@ -46,6 +46,14 @@ export default function TemporaryDrawer() {
               open={state[anchor]}
               onClose={toggleDrawer(anchor, false)}
             >
+              <Button
+                className={classes.navButton}
+                // style={{ textTransform: "none" }}
+                startIcon={<PersonOutlineOutlinedIcon />}
+                variant="contained"
+              >
+                Login
+              </Button>
               <Button
                 className={classes.navButton}
                 // style={{ textTransform: "none" }}

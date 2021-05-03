@@ -24,7 +24,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <AppBar className={classes.customAppbar}>
+    <AppBar position="sticky" className={classes.customAppbar}>
       {mobileView ? <NavbarMobile /> : <NavbarDesktop />}
     </AppBar>
   );
