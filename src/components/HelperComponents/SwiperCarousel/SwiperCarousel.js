@@ -18,11 +18,6 @@ import SwiperCore, {
 // install Swiper modules
 SwiperCore.use([Pagination, Navigation]);
 
-const mySwiper = {
-    width: "100%",
-    height: "150vh",
-};
-
 export default function App() {
 
     return (

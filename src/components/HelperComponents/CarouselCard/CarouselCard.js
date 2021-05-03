@@ -1,41 +1,80 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Card,
+  CardActions,
+  CardContent,
+  Button,
+  Typography,
+  Grid,
+} from "@material-ui/core";
+import AcUnitIcon from "@material-ui/icons/AcUnit";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import SampleImg from "../../../assets/sample-img.jpg";
 
 const useStyles = makeStyles({
-    root: {
-        minWidth: 275,
-    },
-    bullet: {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)',
-    },
-    pos: {
-        marginBottom: 12,
-    },
+  root: {
+    minWidth: 275,
+    // border: "none",
+    boxShadow: "0px 0px 6px 0px rgba(0,0,0,0.25)",
+    // border: "1px solid #000",
+  },
+  pos: {
+    marginBottom: 12,
+  },
+  cardImg: {
+    width: "100%",
+    height: "auto",
+  },
+  cardButton: {
+    fontSize: "0.6rem",
+    textTransform: "unset",
+  },
+  cardActionsButton: {
+    fontSize: "0.8rem",
+    textTransform: "unset",
+  },
+  cardActions: {
+    justifyContent: "flex-end",
+  },
 });
 
 export default function SimpleCard() {
-    const classes = useStyles();
+  const classes = useStyles();
 
-    return (
-        <Card className={classes.root}>
-            <CardContent>
-                <Typography component="h5" variant="h5" gutterBottom>
-                    Personal Loan
-        </Typography>
-                <Typography className={classes.pos}>
-                    At Low Interest
-        </Typography>
-            </CardContent>
-            <CardActions>
-                <Button size="small">Explore</Button>
-            </CardActions>
-        </Card>
-    );
+  return (
+    <Card className={classes.root}>
+      <Grid container>
+        <Grid item xs={4}>
+          <img src={SampleImg} className={classes.cardImg} alt="SampleImg" />
+        </Grid>
+        <Grid item xs={8}>
+          <CardContent>
+            <Typography component="h5" variant="h5" gutterBottom>
+              Personal Loan
+            </Typography>
+            <Typography className={classes.pos}>At Low Interest</Typography>
+            <Button
+              className={classes.cardButton}
+              variant="outlined"
+              color="primary"
+              size="small"
+              startIcon={<AcUnitIcon />}
+            >
+              Earn 3000 Rewards Pts
+            </Button>
+          </CardContent>
+          <CardActions className={classes.cardActions}>
+            <Button
+              className={classes.cardActionsButton}
+              endIcon={<ChevronRightIcon />}
+              size="small"
+            >
+              Explore
+            </Button>
+          </CardActions>
+        </Grid>
+      </Grid>
+    </Card>
+  );
 }
