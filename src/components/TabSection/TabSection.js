@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Tabs, Tab } from "@material-ui/core";
+import { Tabs, Tab, MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import TabSection1 from "./TabSection1/TabSection1";
 import TabSection2 from "./TabSection2/TabSection2";
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,11 +12,16 @@ const useStyles = makeStyles({
   tab: {
     textTransform: "capitalize"
   },
-  palette: {
-    customColor: "red"
-  }
 })
 
+const theme = createMuiTheme({
+  palette: {
+    secondary: {
+      main: "#52AAE0",
+    },
+
+  },
+})
 
 const TabPanel = (props) => {
   const { children, value, index } = props;
@@ -32,9 +37,17 @@ export default function Tabsection() {
   };
 
   return (
-    <>
-      <Tabs className={classes.tabs} value={tab} onChange={handleTabs}>
-        <Tab className={classes.tab} label="Redeem Points" />
+    <MuiThemeProvider theme={theme}>
+      <Tabs
+        scrollButtons="auto"
+        TabIndicatorProps={{
+          style: {
+            width: "150px",
+            height: "0.3rem",
+            borderRadius: "5px 5px 0 0",
+          },
+        }} className={classes.tabs} value={tab} onChange={handleTabs}>
+        <Tab textColor="primary" className={classes.tab} label="Redeem Points" />
         <Tab className={classes.tab} label="Shop & Earn Rewards" />
       </Tabs>
       <TabPanel value={tab} index={0}>
@@ -43,6 +56,6 @@ export default function Tabsection() {
       <TabPanel value={tab} index={1}>
         <TabSection2 />
       </TabPanel>
-    </>
+    </MuiThemeProvider>
   );
 }
