@@ -10,7 +10,8 @@ const useStyles = makeStyles({
     paddingTop: "1rem",
   },
   tab: {
-    textTransform: "capitalize"
+    textTransform: "capitalize",
+    padding: 0
   },
 })
 
@@ -19,8 +20,15 @@ const theme = createMuiTheme({
     secondary: {
       main: "#52AAE0",
     },
-
   },
+  overrides: {
+    MuiTab: {
+      wrapper: {
+        flexDirection: "row",
+        justifyContent: "flex-start"
+      }
+    }
+  }
 })
 
 const TabPanel = (props) => {
