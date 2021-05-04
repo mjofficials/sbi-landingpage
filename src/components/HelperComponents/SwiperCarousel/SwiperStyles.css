@@ -19,7 +19,14 @@
   -webkit-align-items: center;
   align-items: center;
 }
-
+.swiper-slide.swiper-slide-duplicate.swiper-slide-duplicate-active {
+  margin-right: 40px !important;
+}
+@media screen and (min-width: 768px) {
+  .swiper-container {
+    height: 25vh;
+  }
+}
 @media screen and (min-width: 992px) {
   .swiper-container {
     height: 50vh;

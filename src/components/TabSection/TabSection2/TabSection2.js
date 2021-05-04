@@ -1,9 +1,10 @@
 import React from "react";
+import SwiperCarousel from "../../HelperComponents/SwiperCarousel/SwiperCarousel";
 
 const TabSection2 = () => {
   return (
     <div>
-      <p>TabSection2</p>
+      <SwiperCarousel />
     </div>
   );
 };

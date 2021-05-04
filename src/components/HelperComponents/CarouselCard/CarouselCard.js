@@ -14,17 +14,19 @@ import SampleImg from "../../../assets/sample-img.jpg";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
-    // border: "none",
+    minWidth: 300,
     boxShadow: "0px 0px 6px 0px rgba(0,0,0,0.25)",
     // border: "1px solid #000",
+    margin: "16px",
+    paddingTop: "1.5rem"
   },
   pos: {
     marginBottom: 12,
   },
   cardImg: {
     width: "100%",
-    height: "auto",
+    height: "100%",
+    objectFit: "cover"
   },
   cardButton: {
     fontSize: "0.6rem",

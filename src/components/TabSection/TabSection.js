@@ -2,6 +2,21 @@ import React, { useState } from "react";
 import { Tabs, Tab } from "@material-ui/core";
 import TabSection1 from "./TabSection1/TabSection1";
 import TabSection2 from "./TabSection2/TabSection2";
+import { makeStyles } from "@material-ui/core/styles";
+
+
+const useStyles = makeStyles({
+  tabs: {
+    paddingTop: "1rem",
+  },
+  tab: {
+    textTransform: "capitalize"
+  },
+  palette: {
+    customColor: "red"
+  }
+})
+
 
 const TabPanel = (props) => {
   const { children, value, index } = props;
@@ -9,6 +24,7 @@ const TabPanel = (props) => {
 };
 
 export default function Tabsection() {
+  const classes = useStyles();
   const [tab, setTab] = useState(0);
 
   const handleTabs = (e, val) => {
@@ -17,9 +33,9 @@ export default function Tabsection() {
 
   return (
     <>
-      <Tabs value={tab} onChange={handleTabs}>
-        <Tab label="Redeem Points" />
-        <Tab label="Shop & Earn Rewards" />
+      <Tabs className={classes.tabs} value={tab} onChange={handleTabs}>
+        <Tab className={classes.tab} label="Redeem Points" />
+        <Tab className={classes.tab} label="Shop & Earn Rewards" />
       </Tabs>
       <TabPanel value={tab} index={0}>
         <TabSection1 />

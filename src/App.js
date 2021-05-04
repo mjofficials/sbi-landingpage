@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Tabsection />
       </Container>
     </>
