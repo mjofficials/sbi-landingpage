@@ -8,17 +8,19 @@ import {
   Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import smallIcon from "../../../../assets/small-icon.png";
 
-import SampleImg from "../../../../assets/sample-img.jpg";
-
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: 300,
     display: "flex",
     // border: "1px solid black",
-    background: "#F3F8FD",
     margin: "0 0.8rem 0.8rem 0.8rem",
     padding: "0.8rem",
+  },
+  small: {
+    width: theme.spacing(3),
+    height: theme.spacing(3),
   },
   boldText: {
     fontWeight: "bold",
@@ -44,13 +46,17 @@ const useStyles = makeStyles({
     height: "100%",
     objectFit: "cover",
   },
-});
+}));
 
-const OfflineStoreCard = () => {
+const StoreCard = ({ dynamicCardImg, dynamicBgColor }) => {
   const classes = useStyles();
   return (
     <div>
-      <Card elevation={0} className={classes.root}>
+      <Card
+        elevation={0}
+        style={{ background: dynamicBgColor }}
+        className={classes.root}
+      >
         <div className={classes.details}>
           <CardContent
             style={{
@@ -61,6 +67,7 @@ const OfflineStoreCard = () => {
             }}
             className={classes.content}
           >
+            <img src={smallIcon} width="16px" height="16px" alt="smallIcon" />
             <Typography style={{ whiteSpace: "nowrap" }} component="span">
               All Cobb Outlets
             </Typography>
@@ -70,17 +77,26 @@ const OfflineStoreCard = () => {
             <Typography className={classes.greyText}>T&C Apply*</Typography>
           </CardContent>
           <CardActions style={{ paddingTop: "0.8rem" }}>
-            <Button size="small" color="primary" variant="contained">
+            <Button
+              style={{ color: "white" }}
+              size="small"
+              color="primary"
+              variant="contained"
+            >
               Avail Offer Now
             </Button>
           </CardActions>
         </div>
         <CardMedia className={classes.cover}>
-          <img src={SampleImg} className={classes.cardImg} alt="SampleImg" />
+          <img
+            src={dynamicCardImg}
+            className={classes.cardImg}
+            alt="SampleImg"
+          />
         </CardMedia>
       </Card>
     </div>
   );
 };
 
-export default OfflineStoreCard;
+export default StoreCard;

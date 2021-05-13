@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     navButton: {
         textTransform: "none",
         marginLeft: "0.8rem",
-        background: "rgb(247, 208, 48)",
+        background: "#FED127",
 
         "&:hover": {
             background: "rgb(249, 216, 83)",

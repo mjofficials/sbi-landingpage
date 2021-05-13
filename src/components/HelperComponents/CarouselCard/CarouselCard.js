@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import AcUnitIcon from "@material-ui/icons/AcUnit";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import SampleImg from "../../../assets/sample-img.jpg";
+import SampleImg from '../../../assets/sample-img.png';
 
 const useStyles = makeStyles({
   root: {

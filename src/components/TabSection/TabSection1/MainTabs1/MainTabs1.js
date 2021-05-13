@@ -12,12 +12,14 @@ import {
   Grid,
   Button,
   Chip,
+  Divider,
 } from "@material-ui/core";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
 import SearchIcon from "@material-ui/icons/Search";
 import OfflineStore from "../OfflineStore/OfflineStore"
+import OnlineStore from '../OnlineStore/OnlineStore'
 
 const theme = createMuiTheme({
   palette: {
@@ -61,6 +63,10 @@ const useStyles = makeStyles((theme) => ({
   gridBorder: {
     borderRight: 0,
     marginTop: "1rem",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
     [theme.breakpoints.up('md')]: {
       borderRight: "1px solid #E0E0E0",
       marginTop: "0",
@@ -234,6 +240,8 @@ export default function MainTabs1() {
           </Toolbar>
         </Paper>
         <OfflineStore />
+        <Divider variant="middle" />
+        <OnlineStore />
       </TabPanel>
       <TabPanel value={tab} index={1}>
         item 2
