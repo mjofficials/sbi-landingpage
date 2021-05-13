@@ -55,12 +55,19 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0.5),
     margin: 0,
   },
+  gridContainer: {
+    justifyContent: "center"
+  },
   paperGrid: {
     // textAlign: "end",
     display: "flex",
     flexDirection: "column",
-    alignItems: "flex-end",
+    alignItems: "flex-start",
     justifyContent: "center",
+    marginTop: "0",
+    [theme.breakpoints.down('xs')]: {
+      marginTop: "1rem"
+    }
   },
   tab: {
     textTransform: "capitalize",
@@ -77,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 0,
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
+      // marginLeft: theme.spacing(3),
       width: "auto",
     },
   },
@@ -98,11 +105,11 @@ const useStyles = makeStyles((theme) => ({
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    paddingLeft: `calc(1em + ${theme.spacing(6)}px)`,
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
-      width: "30ch",
+      width: "28ch",
     },
   },
 }));
@@ -126,7 +133,7 @@ export default function MainTabs1() {
       chips.filter((chip) => chip.key !== chipToDelete.key)
     );
   };
-  const handleTabs = (val) => {
+  const handleTabs = (e, val) => {
     setTab(val);
   };
 
@@ -166,7 +173,7 @@ export default function MainTabs1() {
           elevation={3}
         >
           <Toolbar>
-            <Grid container spacing={3} >
+            <Grid className={classes.gridContainer} container >
               <Grid
                 className={classes.paperGrid}
                 style={{
@@ -183,6 +190,7 @@ export default function MainTabs1() {
                     <SearchIcon />
                   </div>
                   <InputBase
+                    fullWidth
                     color="primary"
                     placeholder="Search by brand, Offer, Rewards"
                     classes={{
@@ -192,7 +200,7 @@ export default function MainTabs1() {
                   />
                 </div>
               </Grid>
-              <Grid className={classes.paperGrid} item sm={12} md={4} >
+              <Grid className={classes.paperGrid} item sm={12} md={6} >
                 <div className={classes.chipArr}>
                   {chipData.map((data) => {
                     return (
@@ -207,7 +215,7 @@ export default function MainTabs1() {
                   })}
                 </div>
               </Grid>
-              <Grid className={classes.paperGrid} item sm={12} md={4} >
+              <Grid className={classes.paperGrid} item sm={12} md={2} >
                 <Button variant="contained" color="secondary">
                   Add Filter
                 </Button>
