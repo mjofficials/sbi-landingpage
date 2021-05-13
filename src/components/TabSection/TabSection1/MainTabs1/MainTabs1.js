@@ -58,6 +58,14 @@ const useStyles = makeStyles((theme) => ({
   gridContainer: {
     justifyContent: "center"
   },
+  gridBorder: {
+    borderRight: 0,
+    marginTop: "1rem",
+    [theme.breakpoints.up('md')]: {
+      borderRight: "1px solid #E0E0E0",
+      marginTop: "0",
+    },
+  },
   paperGrid: {
     // textAlign: "end",
     display: "flex",
@@ -72,6 +80,7 @@ const useStyles = makeStyles((theme) => ({
   tab: {
     textTransform: "capitalize",
     padding: 0,
+    marginRight: '1rem'
   },
   search: {
     position: "relative",
@@ -148,6 +157,8 @@ export default function MainTabs1() {
         indicatorColor="primary"
         value={tab}
         onChange={handleTabs}
+        variant="scrollable"
+        scrollButtons="auto"
       >
         <Tab
           icon={<ShoppingCartIcon />}
@@ -175,10 +186,9 @@ export default function MainTabs1() {
           <Toolbar>
             <Grid className={classes.gridContainer} container >
               <Grid
-                className={classes.paperGrid}
+                className={(classes.paperGrid, classes.gridBorder)}
                 style={{
                   alignItems: "flex-start",
-                  borderRight: "1px solid #E0E0E0",
                 }}
                 item
                 sm={12}

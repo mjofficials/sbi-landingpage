@@ -11,7 +11,8 @@ const useStyles = makeStyles({
   },
   tab: {
     textTransform: "capitalize",
-    padding: 0
+    padding: 0,
+    marginRight: "1rem"
   },
 })
 
