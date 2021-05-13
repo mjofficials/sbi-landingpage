@@ -17,6 +17,7 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
 import SearchIcon from "@material-ui/icons/Search";
+import OfflineStore from "../OfflineStore/OfflineStore"
 
 const theme = createMuiTheme({
   palette: {
@@ -48,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
   chipArr: {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     flexWrap: "wrap",
     listStyle: "none",
     padding: theme.spacing(0.5),
@@ -125,7 +126,7 @@ export default function MainTabs1() {
       chips.filter((chip) => chip.key !== chipToDelete.key)
     );
   };
-  const handleTabs = (e, val) => {
+  const handleTabs = (val) => {
     setTab(val);
   };
 
@@ -165,7 +166,7 @@ export default function MainTabs1() {
           elevation={3}
         >
           <Toolbar>
-            <Grid container>
+            <Grid container spacing={3} >
               <Grid
                 className={classes.paperGrid}
                 style={{
@@ -173,7 +174,9 @@ export default function MainTabs1() {
                   borderRight: "1px solid #E0E0E0",
                 }}
                 item
-                xs={4}
+                sm={12}
+                md={4}
+
               >
                 <div className={classes.search}>
                   <div className={classes.searchIcon}>
@@ -189,7 +192,7 @@ export default function MainTabs1() {
                   />
                 </div>
               </Grid>
-              <Grid className={classes.paperGrid} item xs={4}>
+              <Grid className={classes.paperGrid} item sm={12} md={4} >
                 <div className={classes.chipArr}>
                   {chipData.map((data) => {
                     return (
@@ -204,7 +207,7 @@ export default function MainTabs1() {
                   })}
                 </div>
               </Grid>
-              <Grid className={classes.paperGrid} item xs={4}>
+              <Grid className={classes.paperGrid} item sm={12} md={4} >
                 <Button variant="contained" color="secondary">
                   Add Filter
                 </Button>
@@ -212,6 +215,7 @@ export default function MainTabs1() {
             </Grid>
           </Toolbar>
         </Paper>
+        <OfflineStore />
       </TabPanel>
       <TabPanel value={tab} index={1}>
         item 2
