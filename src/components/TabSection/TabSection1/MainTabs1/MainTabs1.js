@@ -186,8 +186,9 @@ export default function MainTabs1() {
         <Paper
           style={{
             margin: "2rem 0 2rem 0",
+            border: "1px solid #EAEAEA"
           }}
-          elevation={3}
+          elevation={0}
         >
           <Toolbar>
             <Grid className={classes.gridContainer} container >

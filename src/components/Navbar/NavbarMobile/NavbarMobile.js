@@ -7,8 +7,18 @@ import { IconButton, Toolbar, Typography } from "@material-ui/core";
 import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
 
 const useStyles = makeStyles({
-  drawer: {
-    width: "300px",
+  // drawer: {
+  //   width: "300px",
+  // },
+  navButton: {
+    textTransform: "none",
+    margin: "1rem",
+    background: "#FED127",
+
+    "&:hover": {
+      background: "rgb(249, 216, 83)",
+      color: 'black'
+    }
   },
 });
 
