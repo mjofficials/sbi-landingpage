@@ -28,7 +28,10 @@ const OfflineStore = () => {
   const classes = useStyles();
   return (
     <div>
-      <Paper elevation={0}>
+      <Paper
+        elevation={0}
+        style={{ padding: "1rem" }}
+      >
         <div
           style={{
             margin: "1.5rem 0",

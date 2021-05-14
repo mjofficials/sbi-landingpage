@@ -14,6 +14,7 @@ import "./SwiperStyles.css";
 import SwiperCore, {
     Pagination, Navigation
 } from 'swiper/core';
+import { Container } from "@material-ui/core";
 
 // install Swiper modules
 SwiperCore.use([Pagination, Navigation]);
@@ -21,7 +22,7 @@ SwiperCore.use([Pagination, Navigation]);
 export default function App() {
 
     return (
-        <>
+        <Container style={{ backgroundColor: "#EAEAEA", padding: '0' }} >
             <Swiper
                 slidesPerView={1}
                 spaceBetween={30}
@@ -55,6 +56,6 @@ export default function App() {
                     <CarouselCard />
                 </SwiperSlide>
             </Swiper>
-        </>
+        </Container>
     )
 }

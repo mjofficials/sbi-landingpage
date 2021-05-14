@@ -85,8 +85,10 @@ const useStyles = makeStyles((theme) => ({
   },
   tab: {
     textTransform: "capitalize",
-    padding: 0,
-    marginRight: '1rem'
+    marginRight: '0.5rem',
+    backgroundColor: "white",
+    padding: "0.5rem",
+    borderRadius: "8px",
   },
   search: {
     position: "relative",
@@ -155,6 +157,9 @@ export default function MainTabs1() {
   return (
     <MuiThemeProvider theme={theme}>
       <Tabs
+        style={{
+          marginTop: "1rem"
+        }}
         TabIndicatorProps={{
           style: {
             display: "none",
@@ -186,7 +191,8 @@ export default function MainTabs1() {
         <Paper
           style={{
             margin: "2rem 0 2rem 0",
-            border: "1px solid #EAEAEA"
+            border: "1px solid #EAEAEA",
+            borderRadius: "8px"
           }}
           elevation={0}
         >
@@ -240,9 +246,12 @@ export default function MainTabs1() {
             </Grid>
           </Toolbar>
         </Paper>
-        <OfflineStore />
-        <Divider variant="middle" />
-        <OnlineStore />
+        <Paper >
+          <OfflineStore />
+          <Divider variant="middle" />
+          <OnlineStore />
+        </Paper>
+
       </TabPanel>
       <TabPanel value={tab} index={1}>
         item 2

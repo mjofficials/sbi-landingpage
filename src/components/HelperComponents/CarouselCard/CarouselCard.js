@@ -14,11 +14,12 @@ import SampleImg from '../../../assets/sample-img.png';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 300,
+    minWidth: 290,
     boxShadow: "0px 0px 6px 0px rgba(0,0,0,0.25)",
     // border: "1px solid #000",
     margin: "16px",
-    paddingTop: "1.5rem"
+    paddingTop: "1.5rem",
+    borderRadius: "8px"
   },
   pos: {
     marginBottom: 12,

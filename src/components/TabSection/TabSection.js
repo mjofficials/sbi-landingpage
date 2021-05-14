@@ -11,8 +11,10 @@ const useStyles = makeStyles({
   },
   tab: {
     textTransform: "capitalize",
-    padding: 0,
-    marginRight: "1rem"
+    background: "white",
+    padding: "1rem",
+    marginRight: "1rem",
+    borderRadius: "8px"
   },
 })
 
@@ -51,9 +53,10 @@ export default function Tabsection() {
         scrollButtons="auto"
         TabIndicatorProps={{
           style: {
-            width: "150px",
+            width: "125px",
             height: "0.3rem",
             borderRadius: "5px 5px 0 0",
+            marginLeft: "0.2rem"
           },
         }} className={classes.tabs} value={tab} onChange={handleTabs}>
         <Tab textColor="primary" className={classes.tab} label="Redeem Points" />

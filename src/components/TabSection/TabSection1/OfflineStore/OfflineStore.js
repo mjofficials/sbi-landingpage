@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import StoreCard from "../StoreCard/StoreCard";
 import girl2Img from '../../../../assets/girl-2.png';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: 300,
     display: "flex",
@@ -16,6 +16,7 @@ const useStyles = makeStyles({
     // background: "#F3F8FD",
     margin: "0 0.8rem 0.8rem 0.8rem",
     padding: "0.8rem",
+    borderRadius: 20
   },
   cardArea: {
     display: "flex",
@@ -24,14 +25,20 @@ const useStyles = makeStyles({
   heading: {
     fontWeight: "bold",
   },
-});
+  customPaper: {
+    borderRadius: "8px"
+  }
+}));
 
 const OfflineStore = () => {
   const classes = useStyles();
 
   return (
     <div>
-      <Paper elevation={0}>
+      <Paper
+        className={classes.customPaper}
+        style={{ padding: "1rem" }}
+        elevation={0}>
         <div
           style={{
             marginBottom: "1.5rem",
