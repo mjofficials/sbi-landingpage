@@ -20,10 +20,14 @@ const useStyles = makeStyles((theme) => ({
   },
   cardArea: {
     display: "flex",
-    // justifyContent: "space-evenly",
+    justifyContent: "center",
+    [theme.breakpoints.up("sm")]: {
+      justifyContent: "flex-start",
+    }
   },
   heading: {
     fontWeight: "bold",
+    padding: "1rem"
   },
   customPaper: {
     borderRadius: "8px"
@@ -37,7 +41,7 @@ const OfflineStore = () => {
     <div>
       <Paper
         className={classes.customPaper}
-        style={{ padding: "1rem" }}
+        style={{ paddingTop: "1rem" }}
         elevation={0}>
         <div
           style={{
