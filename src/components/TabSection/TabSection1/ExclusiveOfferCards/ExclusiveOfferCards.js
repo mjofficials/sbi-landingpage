@@ -11,15 +11,11 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: 250,
-    height: "250px",
+    height: "275px",
     padding: "0.5rem",
     margin: "0.5rem",
     [theme.breakpoints.up("322")]: {
       width: 275,
-      height: "275px",
-      padding: "0.5rem",
-      margin: "0.5rem",
-      borderRadius: "8px",
     },
   },
   media: {

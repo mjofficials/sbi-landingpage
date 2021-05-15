@@ -2,6 +2,7 @@ import React from "react";
 import {
   Button,
   Card,
+  CardActionArea,
   CardActions,
   CardContent,
   CardMedia,
@@ -12,11 +13,14 @@ import smallIcon from "../../../../assets/small-icon.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 300,
+    width: 250,
     display: "flex",
     // border: "1px solid black",
     margin: "0 0.8rem 0.8rem 0.8rem",
     padding: "0.8rem",
+    [theme.breakpoints.up("322")]: {
+      maxWidth: 300,
+    },
   },
   small: {
     width: theme.spacing(3),
@@ -76,6 +80,7 @@ const StoreCard = ({ dynamicCardImg, dynamicBgColor }) => {
             </Typography>
             <Typography className={classes.greyText}>T&C Apply*</Typography>
           </CardContent>
+
           <CardActions style={{ paddingTop: "0.8rem" }}>
             <Button
               style={{ color: "white" }}

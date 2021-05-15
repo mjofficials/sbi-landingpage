@@ -1,6 +1,7 @@
 import {
   Button,
   Card,
+  CardActionArea,
   CardActions,
   CardContent,
   CardMedia,
@@ -15,13 +16,13 @@ import moreImg from "../../../../assets/moreImg.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 450,
-    height: "313px",
+    width: 250,
+    height: "auto",
     padding: "0.5rem",
     margin: "0.5rem",
     borderRadius: "8px",
     [theme.breakpoints.up("sm")]: {
-      height: "275px",
+      width: 300,
     },
   },
   RedeemButton: {
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up("sm")]: {
       flexDirection: "row",
-      width: "auto",
+      // width: "100%",
     },
   },
   RedeemCardSubtitle: {
@@ -88,36 +89,38 @@ const RedeemGiftCards = () => {
             At Store Only
           </Button>
         </Grid>
-        <CardContent className={classes.content}>
-          <div>
+        <CardActionArea>
+          <CardContent className={classes.content}>
+            <div>
+              <CardMedia
+                style={{
+                  width: "125px",
+                  height: "70px",
+                  backgroundSize: "contain",
+                }}
+                image={moreImg}
+                title="moreImg"
+              />
+              <Typography
+                className={classes.RedeemCardSubtitle}
+                gutterBottom
+                variant="h5"
+                component="h2"
+              >
+                Food & Grocery
+            </Typography>
+            </div>
             <CardMedia
               style={{
-                width: "125px",
-                height: "70px",
+                width: "150px",
+                height: "134px",
                 backgroundSize: "contain",
               }}
-              image={moreImg}
-              title="moreImg"
+              image={storeImg}
+              title="storeImg"
             />
-            <Typography
-              className={classes.RedeemCardSubtitle}
-              gutterBottom
-              variant="h5"
-              component="h2"
-            >
-              Food & Grocery
-            </Typography>
-          </div>
-          <CardMedia
-            style={{
-              width: "150px",
-              height: "134px",
-              backgroundSize: "contain",
-            }}
-            image={storeImg}
-            title="storeImg"
-          />
-        </CardContent>
+          </CardContent>
+        </CardActionArea>
         <CardActions className={classes.cardActions}>
           <div
             style={{

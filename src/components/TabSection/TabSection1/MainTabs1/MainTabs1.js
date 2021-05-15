@@ -155,7 +155,7 @@ const TabPanel = (props) => {
 export default function MainTabs1() {
   const classes = useStyles();
 
-  const [tab, setTab] = useState(2);
+  const [tab, setTab] = useState(0);
   const [chipData, setChipData] = useState([
     { key: 0, label: "Earn Reward" },
     { key: 1, label: "Online Store" },
