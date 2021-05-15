@@ -28,6 +28,7 @@ import cloveImg from "../../../../assets/cloveImg.png";
 import apolloImg from "../../../../assets/apolloImg.png";
 import zee5Img from "../../../../assets/zee5Img.png";
 import economistImg from "../../../../assets/economistImg.png";
+import RedeemGiftCards from "../RedeemGiftCards/RedeemGiftCards";
 
 const theme = createMuiTheme({
   palette: {
@@ -154,7 +155,7 @@ const TabPanel = (props) => {
 export default function MainTabs1() {
   const classes = useStyles();
 
-  const [tab, setTab] = useState(1);
+  const [tab, setTab] = useState(2);
   const [chipData, setChipData] = useState([
     { key: 0, label: "Earn Reward" },
     { key: 1, label: "Online Store" },
@@ -330,8 +331,25 @@ export default function MainTabs1() {
           </Grid>
         </Paper>
       </TabPanel>
-      <TabPanel value={tab} index={2}>
-        Redeem gift cards
+      <TabPanel style={{
+        border: "5px solid white",
+
+      }} value={tab} index={2}>
+        <Paper
+          style={{
+            margin: "2rem 0px",
+            background: "transparent",
+            border: "8px solid white",
+            padding: "0.8rem",
+          }}
+          elevation={0}
+        >
+          <Grid container className={classes.cardArea}>
+            <RedeemGiftCards />
+            <RedeemGiftCards />
+            <RedeemGiftCards />
+          </Grid>
+        </Paper>
       </TabPanel>
     </MuiThemeProvider>
   );
