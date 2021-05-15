@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Tabs, Tab, MuiThemeProvider, createMuiTheme } from "@material-ui/core";
+import { Tabs, Tab, MuiThemeProvider, createMuiTheme, } from "@material-ui/core";
 import TabSection1 from "./TabSection1/TabSection1";
 import TabSection2 from "./TabSection2/TabSection2";
 import { makeStyles } from "@material-ui/core/styles";

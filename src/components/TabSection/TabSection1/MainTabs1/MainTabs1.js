@@ -20,6 +20,14 @@ import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
 import SearchIcon from "@material-ui/icons/Search";
 import OfflineStore from "../OfflineStore/OfflineStore"
 import OnlineStore from '../OnlineStore/OnlineStore'
+import twidImg from "../../../../assets/twid.svg";
+import ExclusiveOfferCards from "../ExclusiveOfferCards/ExclusiveOfferCards";
+import tataskyImg from "../../../../assets/tatasky.png";
+import hungamaImg from "../../../../assets/hungamaImg.png";
+import cloveImg from "../../../../assets/cloveImg.png";
+import apolloImg from "../../../../assets/apolloImg.png";
+import zee5Img from "../../../../assets/zee5Img.png";
+import economistImg from "../../../../assets/economistImg.png";
 
 const theme = createMuiTheme({
   palette: {
@@ -129,6 +137,13 @@ const useStyles = makeStyles((theme) => ({
       width: "28ch",
     },
   },
+  cardArea: {
+    alignItems: "center",
+    justifyContent: "center",
+    [theme.breakpoints.up("660")]: {
+      justifyContent: "flex-start",
+    },
+  }
 }));
 
 const TabPanel = (props) => {
@@ -139,7 +154,7 @@ const TabPanel = (props) => {
 export default function MainTabs1() {
   const classes = useStyles();
 
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState(1);
   const [chipData, setChipData] = useState([
     { key: 0, label: "Earn Reward" },
     { key: 1, label: "Online Store" },
@@ -250,14 +265,73 @@ export default function MainTabs1() {
           <OfflineStore />
           <Divider variant="middle" />
           <OnlineStore />
+          <Grid container style={{
+            alignItems: "center",
+            justifyContent: "flex-end",
+          }} >
+            <Grid item>
+              <img src={twidImg} style={{ padding: "0.5rem 1.5rem" }} alt="twidImg" />
+            </Grid>
+          </Grid>
         </Paper>
-
       </TabPanel>
-      <TabPanel value={tab} index={1}>
-        item 2
+      <TabPanel style={{
+        border: "5px solid white",
+
+      }} value={tab} index={1}>
+        <Paper
+          style={{
+            margin: "2rem 0px",
+            background: "transparent",
+            border: "8px solid white",
+            padding: "0.8rem",
+          }}
+          elevation={0}
+        >
+          <Grid container className={classes.cardArea}>
+            <ExclusiveOfferCards
+              cardImg={tataskyImg}
+              cardTitle={"Tata Sky"}
+              cardDescription={"Rs 400 off at Tata Sky"}
+            />
+            <ExclusiveOfferCards
+              cardImg={hungamaImg}
+              cardTitle={"Hungama"}
+              cardDescription={"Get 100 days Hungama Music subscription free"}
+            />
+            <ExclusiveOfferCards
+              cardImg={cloveImg}
+              cardTitle={"Clove Dental"}
+              cardDescription={"Dental Health Membership Plan @550 from Clove Dental"}
+            />
+            <ExclusiveOfferCards
+              cardImg={apolloImg}
+              cardTitle={"Apollo"}
+              cardDescription={"Get up to 15% off* at Apollo Pharmacy with your Credit card."}
+            />
+            <ExclusiveOfferCards
+              cardImg={zee5Img}
+              cardTitle={"Zee5"}
+              cardDescription={"Get 20% off at Zee5"}
+            />
+            <ExclusiveOfferCards
+              cardImg={economistImg}
+              cardTitle={"The Economist"}
+              cardDescription={"Get a 15% discount"}
+            />
+          </Grid>
+          <Grid container style={{
+            alignItems: "center",
+            justifyContent: "flex-end",
+          }} >
+            <Grid item>
+              <img src={twidImg} style={{ padding: "0.5rem 1.5rem" }} alt="twidImg" />
+            </Grid>
+          </Grid>
+        </Paper>
       </TabPanel>
       <TabPanel value={tab} index={2}>
-        item 3
+        Redeem gift cards
       </TabPanel>
     </MuiThemeProvider>
   );
