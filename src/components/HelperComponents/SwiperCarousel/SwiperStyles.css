@@ -22,14 +22,19 @@
 .swiper-slide.swiper-slide-duplicate.swiper-slide-duplicate-active {
   margin-right: 40px !important;
 }
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .swiper-container {
     height: 25vh;
   }
-}
+} */
 @media screen and (min-width: 992px) {
   .swiper-container {
     height: 50vh;
+  }
+}
+@media screen and (min-width: 1442px) {
+  .swiper-container {
+    height: 25vh;
   }
 }
 .swiper-container-horizontal > .swiper-pagination-bullets {

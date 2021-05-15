@@ -37,8 +37,16 @@ const useStyles = makeStyles((theme) => ({
         transition: theme.transitions.create('width'),
         width: '100%',
         [theme.breakpoints.up('md')]: {
-            width: '50ch',
+            width: '30ch',
         },
+    },
+    inputGrid: {
+        [theme.breakpoints.up("md")]: {
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-end",
+            justifyContent: "center"
+        }
     },
     navButton: {
         textTransform: "none",
@@ -55,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
         color: "black"
     },
     customGrid: {
-        justifyContent: "space-evenly"
+        justifyContent: "space-between"
     },
 }))
 export { useStyles };

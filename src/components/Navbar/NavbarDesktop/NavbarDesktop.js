@@ -17,13 +17,13 @@ const NavbarDesktop = () => {
   return (
     <>
       <Toolbar>
-        <Grid container className={classes.customGrid} spacing={3}>
-          <Grid item>
+        <Grid container className={classes.customGrid} spacing={0}>
+          <Grid item xs={4} sm={2} md={2} >
             <Typography className={classes.title} variant="h6" noWrap>
               Logo
             </Typography>
           </Grid>
-          <Grid lg={6} item>
+          <Grid className={classes.inputGrid} item xs={4} sm={3} md={5}  >
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -38,7 +38,16 @@ const NavbarDesktop = () => {
               />
             </div>
           </Grid>
-          <Grid item>
+          <Grid
+            item
+            xs={4}
+            m={7}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-end",
+              justifyContent: "center"
+            }} >
             <div className={classes.buttonDiv}>
               <Button
                 className={classes.navButton}
