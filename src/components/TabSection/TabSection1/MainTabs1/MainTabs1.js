@@ -349,6 +349,14 @@ export default function MainTabs1() {
             <RedeemGiftCards />
             <RedeemGiftCards />
           </Grid>
+          <Grid container style={{
+            alignItems: "center",
+            justifyContent: "flex-end",
+          }} >
+            <Grid item>
+              <img src={twidImg} style={{ padding: "0.5rem 1.5rem" }} alt="twidImg" />
+            </Grid>
+          </Grid>
         </Paper>
       </TabPanel>
     </MuiThemeProvider>
