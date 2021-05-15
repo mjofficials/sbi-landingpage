@@ -11,6 +11,7 @@ import bataImg from "../../../../assets/bataImg.png";
 import greenGirlImg from "../../../../assets/greenGirlImg.png";
 import ccdImg from "../../../../assets/ccdImg.png";
 import ccdPosterImg from "../../../../assets/ccdPosterImg.png";
+import ShopAndEarn from "../ShopAndEarn/ShopAndEarn";
 
 const useStyles = makeStyles((theme) => ({
   tab: {
@@ -145,7 +146,7 @@ export default function MainTabs1() {
           }}
           elevation={0}
         >
-          <h1>area 2</h1>
+          <ShopAndEarn />
           <Grid
             container
             style={{

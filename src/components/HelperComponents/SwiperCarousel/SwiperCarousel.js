@@ -12,12 +12,12 @@ import "./SwiperStyles.css";
 
 // import Swiper core and required modules
 import SwiperCore, {
-    Pagination, Navigation
+    Pagination, Navigation, Autoplay
 } from 'swiper/core';
 import { Container } from "@material-ui/core";
 
 // install Swiper modules
-SwiperCore.use([Pagination, Navigation]);
+SwiperCore.use([Pagination, Navigation, Autoplay]);
 
 export default function App() {
 
@@ -28,6 +28,10 @@ export default function App() {
                 spaceBetween={30}
                 // slidesPerGroup={3}
                 loop={true}
+                autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                }}
                 loopFillGroupWithBlank={true}
                 pagination={{
                     "clickable": true
@@ -56,6 +60,6 @@ export default function App() {
                     <CarouselCard />
                 </SwiperSlide>
             </Swiper>
-        </Container>
+        </Container >
     )
 }
