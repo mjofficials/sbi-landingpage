@@ -29,10 +29,10 @@ export default function App() {
                 autoHeight={true}
                 // slidesPerGroup={3}
                 loop={true}
-                // autoplay={{
-                //     delay: 3000,
-                //     disableOnInteraction: false,
-                // }}
+                autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                }}
                 loopFillGroupWithBlank={true}
                 pagination={{
                     "clickable": true

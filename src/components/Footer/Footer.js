@@ -16,14 +16,27 @@ const useStyles = makeStyles((theme) => ({
     padding: "2rem 3rem",
   },
   footerlink: {
+    fontSize: "16px",
+    fontFamily: "Open Sans",
     color: "rgba(255, 255, 255, 0.65)",
     marginBottom: "0.8rem",
     lineHeight: "2rem",
     cursor: "pointer",
   },
+  footerlinkText: {
+    fontSize: "16px",
+    fontFamily: "Open Sans",
+    color: "rgba(255, 255, 255, 0.65)",
+    marginBottom: "0.8rem",
+    lineHeight: "2rem",
+    // cursor: "pointer",
+    cursor: "default"
+  },
   footerlinksTitle: {
     color: "white",
     fontWeight: "bold",
+    fontSize: "18px",
+    fontFamily: "Open Sans",
     marginBottom: "1rem",
   },
   gridItem: {
@@ -120,11 +133,11 @@ const Footer = () => {
           </Typography>
           <Grid container>
             <Grid item xs={12} md={9}>
-              <Typography className={classes.footerlink}>
+              <Typography className={classes.footerlinkText}>
                 Gift and vouchers | Recharge | Movie | Flight | Hotel | Bus |
                 Offers | Swiggy | Personal Loan | Big Basket | Bata | Redeem
               </Typography>
-              <Typography className={classes.footerlink}>
+              <Typography className={classes.footerlinkText}>
                 The trademarks and brand logos are owned by the respective
                 Sponsors/ Suppliers/ Retailers and are authorized for their use
                 in India
