@@ -22,12 +22,14 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     [theme.breakpoints.up("sm")]: {
+      padding: "0 1rem",
       justifyContent: "flex-start",
     }
   },
   heading: {
-    fontWeight: "bold",
-    padding: "1rem"
+    // fontWeight: "bold",
+    padding: "1rem",
+    font: "normal normal bold 20px/18px Open Sans",
   },
   customPaper: {
     borderRadius: "8px"

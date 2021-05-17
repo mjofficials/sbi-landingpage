@@ -50,6 +50,13 @@ const theme = createMuiTheme({
         flexDirection: "row",
         justifyContent: "flex-start",
       },
+      textColorInherit: {
+        font: "normal normal normal 16px/22px Open Sans",
+        "&.Mui-selected": {
+          color: "#000000DE",
+          font: "normal normal bold 17px/23px Open Sans",
+        }
+      }
     },
   },
 });
@@ -57,14 +64,21 @@ const theme = createMuiTheme({
 const useStyles = makeStyles((theme) => ({
   chip: {
     margin: theme.spacing(0.5),
+    font: "normal normal normal 14px/18px Mulish",
+    color: "#454F63",
+    background: "#F9F9F9",
+    borderRadius: "5px",
   },
   chipArr: {
     display: "flex",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     flexWrap: "wrap",
     listStyle: "none",
     padding: theme.spacing(0.5),
     margin: 0,
+    [theme.breakpoints.up("768px")]: {
+      justifyContent: "flex-start",
+    },
   },
   gridContainer: {
     justifyContent: "center"
@@ -85,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
     // textAlign: "end",
     display: "flex",
     flexDirection: "column",
-    alignItems: "flex-start",
+    alignItems: "center",
     justifyContent: "center",
     marginTop: "0",
     [theme.breakpoints.down('xs')]: {
@@ -98,6 +112,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     padding: "0.5rem",
     borderRadius: "8px",
+
   },
   search: {
     position: "relative",
@@ -129,7 +144,9 @@ const useStyles = makeStyles((theme) => ({
     // borderRadius: "8px",
   },
   inputInput: {
+    font: "normal normal normal 16px/20px Mulish",
     padding: theme.spacing(1, 1, 1, 0),
+    color: "#000000DE",
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(6)}px)`,
     transition: theme.transitions.create("width"),
@@ -216,9 +233,6 @@ export default function MainTabs1() {
             <Grid className={classes.gridContainer} container >
               <Grid
                 className={(classes.paperGrid, classes.gridBorder)}
-                style={{
-                  alignItems: "flex-start",
-                }}
                 item
                 sm={12}
                 md={4}

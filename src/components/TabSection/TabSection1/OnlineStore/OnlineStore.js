@@ -1,5 +1,5 @@
 import React from "react";
-import { Paper, Typography } from "@material-ui/core";
+import { Grid, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import StoreCard from "../StoreCard/StoreCard";
 import foodImg from "../../../../assets/food-img.png";
@@ -16,9 +16,10 @@ const useStyles = makeStyles((theme) => ({
   cardArea: {
     display: "flex",
     justifyContent: "center",
-    // [theme.breakpoints.up("sm")]: {
-    //   justifyContent: "flex-start",
-    // },
+    [theme.breakpoints.up("sm")]: {
+      padding: "0 1rem",
+      justifyContent: "flex-start",
+    }
   },
   cardAreaGridleft: {
     display: "flex",
@@ -28,7 +29,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   heading: {
-    fontWeight: "bold",
+    // fontWeight: "bold",
+    font: "normal normal bold 20px/18px Open Sans",
     padding: "1rem",
   },
 }));
@@ -47,7 +49,9 @@ const OfflineStore = () => {
             Online Store
           </Typography>
         </div>
-        <StoreCard dynamicBgColor={"#FAD8D2"} dynamicCardImg={foodImg} />
+        <Grid container className={classes.cardArea}>
+          <StoreCard dynamicBgColor={"#FAD8D2"} dynamicCardImg={foodImg} />
+        </Grid>
       </Paper>
     </div>
   );

@@ -30,8 +30,11 @@ const useStyles = makeStyles((theme) => ({
     background: "#FFFFFF",
     border: "1px solid #D6D6D6",
     borderRadius: "4px",
-    fontWeight: "bold",
+    fontWeight: "normal",
+    fontSize: "19px",
+    fontFamily: "Open Sans",
     letterSpacing: "0.82px",
+    // font: normal normal normal 19px/26px Open Sans;
   },
   RedeemButtonBottom: {
     width: "100%",
@@ -39,18 +42,26 @@ const useStyles = makeStyles((theme) => ({
     background: "#000000",
     color: "white",
     margin: "0 8px",
+    fontWeight: "normal",
+    fontSize: "16px",
+    fontFamily: "OPen Sans",
+    // font: normal normal normal 16px/22px Open Sans;
+    letterSpacing: "0.69px",
     "&:hover": {
       //   backgroundColor: "#4aff13",
       backgroundColor: theme.palette.success.dark,
     },
     [theme.breakpoints.up("sm")]: {
       flexDirection: "row",
+      fontSize: "18px",
       // width: "100%",
     },
   },
   RedeemCardSubtitle: {
+    // font: normal normal normal 10px/14px Open Sans;
+    fontFamily: "Open Sans",
     fontSize: "10px",
-    fontWeight: "bold",
+    fontWeight: "normal",
     letterSpacing: "0.43px",
     textAlign: "center",
   },
@@ -130,7 +141,7 @@ const RedeemGiftCards = () => {
             }}
           >
             <Typography
-              style={{ fontWeight: "bold", paddingLeft: "0.8rem" }}
+              style={{ color: "#000000DE", fontWeight: "bold", paddingLeft: "0.8rem" }}
               variant="h4"
               component="h2"
             >
@@ -141,6 +152,10 @@ const RedeemGiftCards = () => {
                 paddingLeft: "0.8rem",
                 letterSpacing: "0.6px",
                 fontSize: "14px",
+                fontWeight: 'normal',
+                fontFamily: 'Open Sans',
+                // font: normal normal normal 14px/19px Open Sans;
+                color: "#181818",
               }}
               gutterBottom
               variant="h6"

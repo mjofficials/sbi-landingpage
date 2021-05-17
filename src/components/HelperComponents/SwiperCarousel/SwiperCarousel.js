@@ -28,10 +28,10 @@ export default function App() {
                 spaceBetween={30}
                 // slidesPerGroup={3}
                 loop={true}
-                autoplay={{
-                    delay: 3000,
-                    disableOnInteraction: false,
-                }}
+                // autoplay={{
+                //     delay: 3000,
+                //     disableOnInteraction: false,
+                // }}
                 loopFillGroupWithBlank={true}
                 pagination={{
                     "clickable": true

@@ -42,18 +42,21 @@ const useStyles = makeStyles((theme) => ({
   BottomText1: {
     margin: "1rem 0 1.5rem 0",
     font: "16px",
+    fontFamily: "Open Sans",
     letterSpacing: "1.28px",
     color: "rgba(78, 78, 78, 1)",
     opacity: "0.62",
   },
   BottomText2: {
     fontSize: "15px",
+    fontFamily: "Open Sans",
     fontWeight: "bold",
     color: "rgba(78, 78, 78, 1)",
     opacity: "0.59",
   },
   BottomTextBold: {
     fontSize: "24px",
+    fontFamily: "Open Sans",
     fontWeight: "bold",
     letterSpacing: 0,
     color: "rgba(9, 9, 9, 1)",

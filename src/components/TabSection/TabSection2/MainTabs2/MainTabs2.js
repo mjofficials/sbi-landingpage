@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Tabs, Tab, makeStyles, Paper, Grid } from "@material-ui/core";
+import {
+  Tabs,
+  Tab,
+  makeStyles,
+  Paper,
+  Grid,
+  MuiThemeProvider,
+  createMuiTheme,
+} from "@material-ui/core";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 import LayersIcon from "@material-ui/icons/Layers";
 import twidImg from "../../../../assets/twid.svg";
@@ -12,6 +20,32 @@ import greenGirlImg from "../../../../assets/greenGirlImg.png";
 import ccdImg from "../../../../assets/ccdImg.png";
 import ccdPosterImg from "../../../../assets/ccdPosterImg.png";
 import ShopAndEarn from "../ShopAndEarn/ShopAndEarn";
+
+
+const theme = createMuiTheme({
+
+  overrides: {
+    MuiButton: {
+      root: {
+        textTransform: "capitalize",
+      },
+    },
+    MuiTab: {
+      wrapper: {
+        flexDirection: "row",
+        justifyContent: "flex-start",
+      },
+      textColorInherit: {
+        font: "normal normal normal 16px/22px Open Sans",
+        "&.Mui-selected": {
+          color: "#000000DE",
+          font: "normal normal bold 17px/23px Open Sans",
+        }
+      }
+    },
+  },
+
+})
 
 const useStyles = makeStyles((theme) => ({
   tab: {
@@ -44,7 +78,7 @@ export default function MainTabs1() {
   };
 
   return (
-    <>
+    <MuiThemeProvider theme={theme} >
       <Tabs
         style={{
           marginTop: "1rem",
@@ -164,6 +198,6 @@ export default function MainTabs1() {
           </Grid>
         </Paper>
       </TabPanel>
-    </>
+    </MuiThemeProvider>
   );
 }

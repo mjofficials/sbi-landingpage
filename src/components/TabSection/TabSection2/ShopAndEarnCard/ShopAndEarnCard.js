@@ -20,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
   cardTitle: {
     fontSize: "28px",
     fontWeight: "bold",
+    fontFamily: "Open Sans",
+    textTransform: "capitalize",
     color: "#4E4E4E",
   },
   cardContent: {
@@ -30,10 +32,13 @@ const useStyles = makeStyles((theme) => ({
   cardDescription: {
     fontSize: "16px",
     color: "#8E8E8E",
+    fontFamily: "Open Sans",
+    textTransform: "capitalize",
   },
   cardGreenText: {
     fontSize: "20px",
     fontWeight: "bold",
+    fontFamily: "Open Sans",
     color: "#36A729",
   },
 }));

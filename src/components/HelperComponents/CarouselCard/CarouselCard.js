@@ -22,7 +22,9 @@ const useStyles = makeStyles({
     borderRadius: "8px"
   },
   pos: {
-    marginBottom: 12,
+    marginBottom: 24,
+    font: "normal normal normal 18px/10px Open Sans",
+    color: "#070707",
   },
   cardImg: {
     width: "100%",
@@ -30,11 +32,19 @@ const useStyles = makeStyles({
     objectFit: "cover"
   },
   cardButton: {
-    fontSize: "0.6rem",
+    // fontFamily: "Open Sans",
+    // fontWeight: "bold",
+    // fontSize: "14px",
+    minWidth: "150px",
+    font: "normal normal 600 14px/13px Open Sans",
+    border: "1px solid #22A9E0",
+    borderRadius: "4px",
+    color: "#22A9E0",
+    letterSpacing: "13",
     textTransform: "unset",
   },
   cardActionsButton: {
-    fontSize: "0.8rem",
+    font: "normal normal normal 12px/9px Open Sans",
     textTransform: "unset",
   },
   cardActions: {
@@ -53,14 +63,15 @@ export default function SimpleCard() {
         </Grid>
         <Grid item xs={8}>
           <CardContent>
-            <Typography component="h5" variant="h5" gutterBottom>
+            <Typography style={{
+              color: "#070707",
+              font: "normal normal 600 20px/25px Open Sans",
+            }} component="h5" variant="h5" gutterBottom>
               Personal Loan
             </Typography>
             <Typography className={classes.pos}>At Low Interest</Typography>
             <Button
               className={classes.cardButton}
-              variant="outlined"
-              color="primary"
               size="small"
               startIcon={<AcUnitIcon />}
             >

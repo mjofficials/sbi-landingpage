@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "left",
         fontSize: "24px",
         fontWeight: "bold",
+        fontFamily: "Open Sans",
         color: "#000000DE",
     },
     HeadingText2: {
@@ -20,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
         color: "#8E8E8E",
         fontSize: "16px",
         textTransform: "capitalize",
+        fontFamily: "Open Sans",
     },
     cardArea: {
         alignItems: "center",

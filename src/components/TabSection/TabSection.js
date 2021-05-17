@@ -12,9 +12,12 @@ const useStyles = makeStyles({
   tab: {
     textTransform: "capitalize",
     background: "white",
+    color: "#000000DE",
     padding: "1rem",
     marginRight: "1rem",
-    borderRadius: "8px"
+    borderRadius: "8px",
+    // font: "normal normal normal 22px/15px Open Sans",
+
   },
 })
 
@@ -29,6 +32,14 @@ const theme = createMuiTheme({
       wrapper: {
         flexDirection: "row",
         justifyContent: "flex-start"
+      },
+      textColorInherit: {
+        // font: "normal normal normal 22px/15px Open Sans", 
+        opacity: 1,
+        "&.Mui-selected": {
+          color: "#000000DE",
+          font: "normal normal bold 22px/15px Open Sans",
+        }
       }
     }
   }
@@ -50,6 +61,7 @@ export default function Tabsection() {
   return (
     <MuiThemeProvider theme={theme}>
       <Tabs
+        variant="scrollable"
         scrollButtons="auto"
         TabIndicatorProps={{
           style: {
