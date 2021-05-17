@@ -19,16 +19,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const testing = () => {
-  console.log("register button");
-};
-
 const RegisterBtn = () => {
   const classes = useStyles();
   return (
     <div>
       <Button
-        onClick={testing}
         className={classes.registerButton}
         startIcon={<PersonOutlineOutlinedIcon />}
         variant="contained"
