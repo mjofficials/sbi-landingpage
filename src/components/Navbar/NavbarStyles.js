@@ -58,10 +58,6 @@ const useStyles = makeStyles((theme) => ({
             color: 'black'
         }
     },
-    customAppbar: {
-        background: "white",
-        color: "black"
-    },
     customGrid: {
         justifyContent: "space-between"
     },

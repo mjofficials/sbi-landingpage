@@ -26,6 +26,7 @@ export default function App() {
             <Swiper
                 slidesPerView={1}
                 spaceBetween={30}
+                autoHeight={true}
                 // slidesPerGroup={3}
                 loop={true}
                 // autoplay={{

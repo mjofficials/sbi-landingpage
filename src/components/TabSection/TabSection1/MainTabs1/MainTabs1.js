@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(0.5),
     font: "normal normal normal 14px/18px Mulish",
     color: "#454F63",
-    background: "#F9F9F9",
+    // background: "#F9F9F9",
     borderRadius: "5px",
   },
   chipArr: {

@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { AppBar } from "@material-ui/core";
-import { useStyles } from "./NavbarStyles";
+import { AppBar, } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import NavbarDesktop from "./NavbarDesktop/NavbarDesktop";
 import NavbarMobile from "./NavbarMobile/NavbarMobile";
+
+
+const useStyles = makeStyles({
+  customAppbar: {
+    background: "white",
+    color: "black"
+  },
+});
 
 const Navbar = () => {
   const classes = useStyles();
