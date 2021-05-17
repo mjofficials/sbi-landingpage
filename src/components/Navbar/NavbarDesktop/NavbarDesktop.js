@@ -3,14 +3,13 @@ import {
   Toolbar,
   Typography,
   InputBase,
-  Button,
   Grid,
 } from "@material-ui/core";
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from "@material-ui/icons/Search";
-import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
-import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
-
+import LogInBtn from "../LogInBtn/LogInBtn";
+import RegisterBtn from '../RegisterBtn/RegisterBtn'
+// import RegisterBtn from '../RegisterBtn/RegisterBtn'
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -60,18 +59,12 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: "center"
     }
   },
-  navButton: {
-    textTransform: "none",
-    marginLeft: "0.8rem",
-    background: "#FED127",
-
-    "&:hover": {
-      background: "rgb(249, 216, 83)",
-      color: 'black'
-    }
-  },
   customGrid: {
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  buttonDiv: {
+    display: "flex"
   },
 }))
 
@@ -113,21 +106,8 @@ const NavbarDesktop = () => {
               justifyContent: "center"
             }} >
             <div className={classes.buttonDiv}>
-              <Button
-                className={classes.navButton}
-                startIcon={<ExitToAppOutlinedIcon />}
-                variant="contained"
-              >
-                Login
-              </Button>
-              <Button
-                className={classes.navButton}
-                // style={{ textTransform: "none" }}
-                startIcon={<PersonOutlineOutlinedIcon />}
-                variant="contained"
-              >
-                Register
-              </Button>
+              <LogInBtn />
+              <RegisterBtn />
             </div>
           </Grid>
         </Grid>
