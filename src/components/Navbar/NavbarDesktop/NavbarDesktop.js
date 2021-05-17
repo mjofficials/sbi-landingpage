@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
+      // marginLeft: theme.spacing(3),
       width: 'auto',
     },
   },
@@ -49,14 +49,14 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '30ch',
+      width: '40vw',
     },
   },
   inputGrid: {
     [theme.breakpoints.up("md")]: {
       display: "flex",
       flexDirection: "column",
-      alignItems: "flex-end",
+      alignItems: "flex-start",
       justifyContent: "center"
     }
   },
