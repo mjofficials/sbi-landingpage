@@ -11,6 +11,8 @@ import {
   StepLabel,
   Box,
   Typography,
+  createMuiTheme,
+  MuiThemeProvider,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
@@ -18,6 +20,7 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import CloseIcon from "@material-ui/icons/Close";
 import loginCardBgImg from "../../../assets/loginCardBgImg.png";
 import LoginCard from "./LoginCard/LoginCard";
+import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 
 const useStyles = makeStyles((theme) => ({
   navButton: {
@@ -33,6 +36,11 @@ const useStyles = makeStyles((theme) => ({
       color: "black",
     },
   },
+  LoginDialogScreen: {
+    [theme.breakpoints.up("992")]: {
+      // width: "50%",
+    },
+  },
   dialogContentRoot: {
     backgroundImage: `url(${loginCardBgImg})`,
     backgroundSize: "cover",
@@ -45,8 +53,8 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   dialogActionDiv: {
+    maxWidth: "300px",
     display: "flex",
-    width: "100%",
     justifyContent: "flex-end",
   },
   loginCardTextField: {
@@ -77,6 +85,23 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 30,
   },
 }));
+
+const breakpoints = createBreakpoints({});
+
+const theme = createMuiTheme({
+  overrides: {
+    MuiDialog: {
+      paperFullScreen: {
+        [breakpoints.up("992")]: {
+          width: "50%",
+        },
+      },
+      scrollPaper: {
+        justifyContent: "flex-end",
+      },
+    },
+  },
+});
 
 export default function LogInBtn() {
   const classes = useStyles();
@@ -156,6 +181,7 @@ export default function LogInBtn() {
           <>
             <Grid
               style={{
+                maxWidth: "300px",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "flex-start",
@@ -198,7 +224,7 @@ export default function LogInBtn() {
   };
 
   return (
-    <div>
+    <MuiThemeProvider theme={theme}>
       <Button
         className={classes.navButton}
         startIcon={<ExitToAppOutlinedIcon />}
@@ -208,13 +234,14 @@ export default function LogInBtn() {
         Login
       </Button>
       <Dialog
+        className={classes.LoginDialogScreen}
         fullScreen
         open={open}
         //   onClose={cardHandleClose}
         aria-labelledby="form-dialog-title"
       >
         <DialogContent className={classes.dialogContentRoot}>
-          <div className={classes.dialogActionDiv}>
+          <Grid container className={classes.dialogActionDiv}>
             <DialogActions
               style={{
                 padding: 0,
@@ -234,7 +261,7 @@ export default function LogInBtn() {
                 color="primary"
               />
             </DialogActions>
-          </div>
+          </Grid>
           {activeStep === labels.length ? (
             // Last Component
             <Success />
@@ -260,7 +287,7 @@ export default function LogInBtn() {
           )}
         </DialogContent>
       </Dialog>
-    </div>
+    </MuiThemeProvider>
   );
 }
 const LoginMobileNumberInput = ({
