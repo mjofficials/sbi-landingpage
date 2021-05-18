@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import {
   Button,
-  Card,
-  CardActions,
-  CardContent,
   Dialog,
   DialogActions,
   DialogContent,
   Grid,
   TextField,
-  Typography,
   Stepper,
   Step,
   StepLabel,
+  Box,
+  Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import CloseIcon from "@material-ui/icons/Close";
 import loginCardBgImg from "../../../assets/loginCardBgImg.png";
+import LoginCard from "./LoginCard/LoginCard";
 
 const useStyles = makeStyles((theme) => ({
   navButton: {
@@ -34,8 +34,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   dialogContentRoot: {
-    // backgroundImage:
-    //   "url(https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350)",
     backgroundImage: `url(${loginCardBgImg})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -51,58 +49,14 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     justifyContent: "flex-end",
   },
-  loginCard: {
-    // height: "350px",
-    maxWidth: 300,
-    height: "auto",
-    padding: "1rem",
-    background: "#FFFFFF",
-    boxShadow: "0px 2px 60px #0000001F",
-    borderRadius: "20px",
-  },
-  loginCardTitle: {
-    fontSize: "20px",
-    textAlign: "center",
-    fontWeight: "bold",
-    margin: "1.5rem 0 0.5rem",
-    // font: normal normal bold 32px/43px Open Sans,
-  },
-  loginCardOtpText: {
-    marginBottom: "1.5rem",
-    fontSize: "12px",
-    letterSpacing: "0.5px",
-    color: "#000000DE",
-  },
-  loginCardContent: {
-    padding: 0,
-  },
   loginCardTextField: {
     margin: "2rem 0",
   },
+
   loginCardTextGrid: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-  },
-  loginCardButton: {
-    marginBottom: "0.5rem",
-    background: "#52AAE0",
-    // fontSize: "18px",
-    textTransform: "capitalize",
-  },
-  loginCardBottomText: {
-    textAlign: "center",
-    fontSize: "12px",
-  },
-  loginCardAction: {
-    flexDirection: "column",
-  },
-  loginCardTermsButton: {
-    padding: 0,
-    margin: 0,
-    fontSize: "12px",
-    textTransform: "capitalize",
-    color: "#52AAE0",
   },
   resendButton: {
     fontsize: "16px",
@@ -110,39 +64,136 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "capitalize",
     color: "#22A9E0",
   },
+  LoginStepper: {
+    padding: 0,
+  },
+  LoginStepLabel: {
+    margin: 0,
+  },
+  box: {
+    padding: theme.spacing(3),
+  },
+  title: {
+    marginTop: 30,
+  },
 }));
 
-const LogInBtn = () => {
+export default function LogInBtn() {
   const classes = useStyles();
+  // STORED VALUES
+  const labels = ["Login", "Verify"];
+  // const userDetail = {
+  //   mobileNumber: "",
+  // };
+  // const fieldsValidation = {
+  //   phone: {
+  //     error: "",
+  //     validate: "phone",
+  //     maxLength: 15,
+  //   },
+  // };
+
   const [open, setOpen] = useState(false);
+  const [activeStep, setActiveStep] = useState(0);
+  const [mobileInputValues, setMobileInputValues] = useState("");
+  const [otpInputValues, setOtpInputValues] = useState("");
+  // const [formErrors, setFormErrors] = useState({});
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  // HANDLERS
+  // Go back to prev step (or)) Proceed to next step
+  const stepperHandleNext = () => setActiveStep((prev) => prev + 1);
+  const stepperHandleBack = () => setActiveStep((prev) => prev - 1);
+
+  // Card open (or) close
+  const cardHandleClickOpen = () => setOpen(true);
+  const cardHandleClose = () => setOpen(false);
+
+  // Handle form change
+  const LoginMobileNumberInputHandleChange = (e) => {
+    // Set values
+    const { value } = e.target;
+    setMobileInputValues(value);
+
+    let userMobile = e.target.value;
+    console.log("LoginMobileNumberInput:", userMobile);
+
+    // set errors
+    // const error = formValidation(name, value, fieldsValidation) || "";
+
+    // setFormErrors({
+    //   [name]: error
+    // });
+  };
+  const LoginOtpInputHandleChange = (e) => {
+    // Set values
+    setOtpInputValues(e.target.value);
+    let userOtp = e.target.value;
+    console.log("LoginOtpInput:", userOtp);
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const ShowStep = (step) => {
+  const handleSteps = (step) => {
     switch (step) {
-      case 1:
+      case 0:
         return (
           <LoginCard
+            stepperHandleNext={stepperHandleNext}
+            handleChange={LoginMobileNumberInputHandleChange}
             DynamicloginCardTitle={"Log in to rewards"}
             DynamicBtnText={"Login"}
+            // DynamicOtpMsg={""}
+            DynamicInput={
+              <LoginMobileNumberInput
+                LoginMobileNumberInputHandleChange={
+                  LoginMobileNumberInputHandleChange
+                }
+                mobileInputValues={mobileInputValues}
+              />
+            }
           />
         );
-      case 2:
+      case 1:
         return (
-          <LoginCard
-            DynamicloginCardTitle={"Verify OTP"}
-            // DynamicloginCardTitle={"Log in to rewards"}
-            DynamicOtpMsg={"An OTP has been sent to your number XXXXXXX445"}
-            DynamicBtnText={"Verify"}
-          />
+          <>
+            <Grid
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                justifyContent: "flex-start",
+              }}
+              container
+            >
+              <Button
+                onClick={stepperHandleBack}
+                variant="text"
+                color="default"
+                startIcon={
+                  <ArrowBackIcon
+                    style={{
+                      color: "#1B9DF2",
+                      fontSize: "1.5rem",
+                    }}
+                  />
+                }
+              />
+            </Grid>
+            <LoginCard
+              stepperHandleNext={stepperHandleNext}
+              stepperHandleBack={stepperHandleBack}
+              DynamicloginCardTitle={"Verify OTP"}
+              DynamicBtnText={"Verify"}
+              DynamicOtpMsg={"An OTP has been sent to your number XXXXXXX445"}
+              DynamicInput={
+                <LoginOtpInput
+                  LoginOtpInputHandleChange={LoginOtpInputHandleChange}
+                  otpInputValues={otpInputValues}
+                />
+              }
+            />
+          </>
         );
       default:
+        break;
     }
   };
 
@@ -152,123 +203,119 @@ const LogInBtn = () => {
         className={classes.navButton}
         startIcon={<ExitToAppOutlinedIcon />}
         variant="contained"
-        onClick={handleClickOpen}
+        onClick={cardHandleClickOpen}
       >
         Login
       </Button>
       <Dialog
         fullScreen
         open={open}
-        //   onClose={handleClose}
+        //   onClose={cardHandleClose}
         aria-labelledby="form-dialog-title"
       >
-        {/* <Grid container> </Grid> */}
-
         <DialogContent className={classes.dialogContentRoot}>
           <div className={classes.dialogActionDiv}>
-            <DialogActions>
+            <DialogActions
+              style={{
+                padding: 0,
+              }}
+            >
               <Button
+                style={{
+                  paddingBottom: "0.5rem",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  width: "50%",
+                }}
                 startIcon={
                   <CloseIcon style={{ fontSize: "1.5rem", color: "#000" }} />
                 }
-                onClick={handleClose}
+                onClick={cardHandleClose}
                 color="primary"
               />
             </DialogActions>
           </div>
-
-          <Stepper
-            style={{ width: "18%" }}
-            activeStep="1"
-            orientation="horizontal"
-          >
-            <Step>
-              <StepLabel></StepLabel>
-            </Step>
-            <Step>
-              <StepLabel></StepLabel>
-            </Step>
-          </Stepper>
-          {ShowStep(2)}
-          {/* <LoginCard
-            DynamicloginCardTitle={"Verify OTP"}
-            // DynamicloginCardTitle={"Log in to rewards"}
-            DynamicOtpMsg={"An OTP has been sent to your number XXXXXXX445"}
-            DynamicBtnText={"Login"}
-          /> */}
+          {activeStep === labels.length ? (
+            // Last Component
+            <Success />
+          ) : (
+            <>
+              <Stepper
+                className={classes.LoginStepper}
+                style={{ display: "none" }}
+                activeStep={activeStep}
+                // style={{ margin: "0" }}
+                alternativeLabel
+              >
+                {labels.map((label) => (
+                  <Step className={classes.LoginStep} key={label}>
+                    <StepLabel className={classes.LoginStepLabel}>
+                      {label}
+                    </StepLabel>
+                  </Step>
+                ))}
+              </Stepper>
+              {handleSteps(activeStep)}
+            </>
+          )}
         </DialogContent>
       </Dialog>
     </div>
   );
-};
-
-export default LogInBtn;
-
-const LoginCard = ({
-  DynamicloginCardTitle,
-  DynamicOtpMsg,
-  DynamicBtnText,
+}
+const LoginMobileNumberInput = ({
+  LoginMobileNumberInputHandleChange,
+  mobileInputValues,
 }) => {
   const classes = useStyles();
-
   return (
     <>
-      <Card elevation={0} className={classes.loginCard}>
-        <CardContent className={classes.loginCardContent}>
-          <Typography
-            className={classes.loginCardTitle}
-            gutterBottom
-            variant="h5"
-            component="h2"
-          >
-            {DynamicloginCardTitle}
-          </Typography>
-          <Typography
-            className={classes.loginCardOtpText}
-            gutterBottom
-            variant="h6"
-            component="h2"
-          >
-            {DynamicOtpMsg}
-          </Typography>
-          {/* <Grid className={classes.loginCardTextGrid} container>
-            <TextField
-              className={classes.loginCardTextField}
-              size="small"
-              id="emaiName"
-              label="Enter mobile no./username"
-              variant="outlined"
-            />
-          </Grid> */}
-          <Grid className={classes.loginCardTextGrid} container>
-            <TextField size="small" id="otp" label="OTP" variant="outlined" />
-            <Button className={classes.resendButton} variant="text">
-              resend Otp
-            </Button>
-          </Grid>
-        </CardContent>
-        <CardActions className={classes.loginCardAction}>
-          <Button
-            fullWidth
-            className={classes.loginCardButton}
-            size="small"
-            variant="contained"
-            color="primary"
-          >
-            {DynamicBtnText}
-          </Button>
-          <Typography
-            className={classes.loginCardBottomText}
-            variant="body2"
-            color="textSecondary"
-          >
-            By logging in, I agree to the
-            <Button className={classes.loginCardTermsButton} variant="text">
-              Terms & Conditions
-            </Button>
-          </Typography>
-        </CardActions>
-      </Card>
+      <TextField
+        value={mobileInputValues}
+        onChange={LoginMobileNumberInputHandleChange}
+        className={classes.loginCardTextField}
+        size="small"
+        // error
+        // helperText="Incorrect entry."
+        label="Enter mobile no./username"
+        variant="outlined"
+        // id="emaiName"
+        // id="outlined-error-helper-text"
+        // label="Error"
+      />
     </>
+  );
+};
+
+const LoginOtpInput = ({ LoginOtpInputHandleChange, otpInputValues }) => {
+  const classes = useStyles();
+  return (
+    <>
+      <TextField
+        value={otpInputValues}
+        onChange={LoginOtpInputHandleChange}
+        size="small"
+        id="otp"
+        label="OTP"
+        variant="outlined"
+      />
+      <Button className={classes.resendButton} variant="text">
+        resend Otp
+      </Button>
+    </>
+  );
+};
+
+const Success = () => {
+  const classes = useStyles();
+  return (
+    <Box className={classes.box}>
+      <Typography variant="h2" align="center">
+        Thank you!
+      </Typography>
+      <Typography component="p" align="center" className={classes.title}>
+        You are allowed to login
+      </Typography>
+    </Box>
   );
 };
