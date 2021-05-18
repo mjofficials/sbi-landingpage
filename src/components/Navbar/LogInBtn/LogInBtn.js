@@ -208,7 +208,7 @@ export default function LogInBtn() {
               stepperHandleBack={stepperHandleBack}
               DynamicloginCardTitle={"Verify OTP"}
               DynamicBtnText={"Verify"}
-              DynamicOtpMsg={"An OTP has been sent to your number XXXXXXX445"}
+              DynamicOtpMsg={`An OTP has been sent to your number ${mobileInputValues}`}
               DynamicInput={
                 <LoginOtpInput
                   LoginOtpInputHandleChange={LoginOtpInputHandleChange}
