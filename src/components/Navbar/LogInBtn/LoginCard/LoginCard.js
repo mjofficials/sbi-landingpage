@@ -34,12 +34,6 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "column",
         justifyContent: "center",
     },
-    loginCardButton: {
-        marginBottom: "0.5rem",
-        background: "#52AAE0",
-        // fontSize: "18px",
-        textTransform: "capitalize",
-    },
     loginCardBottomText: {
         textAlign: "center",
         fontSize: "12px",
@@ -60,15 +54,9 @@ const useStyles = makeStyles((theme) => ({
 const LoginCard = ({
     DynamicloginCardTitle,
     DynamicOtpMsg,
-    DynamicBtnText,
     DynamicInput,
-    stepperHandleNext,
-    // values: { mobileInput },
-    formErrors
 }) => {
     const classes = useStyles();
-    // Check if all values are not empty or if there are some error
-    // const isValid = mobileInput.length > 0 || !formErrors.mobileInput;
     return (
         <>
             <Card elevation={0} className={classes.loginCard}>
@@ -94,7 +82,7 @@ const LoginCard = ({
                     </Grid>
                 </CardContent>
                 <CardActions className={classes.loginCardAction}>
-                    <Button
+                    {/* <Button
                         fullWidth
                         className={classes.loginCardButton}
                         size="small"
@@ -103,9 +91,7 @@ const LoginCard = ({
                         onClick={stepperHandleNext}
                     // disabled={!isValid}
                     >
-                        {DynamicBtnText}
-                        {/* Login */}
-                    </Button>
+                    </Button> */}
                     {/* <Button
                         fullWidth
                         className={classes.loginCardButton}

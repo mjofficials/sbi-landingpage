@@ -10,9 +10,15 @@ const useStyles = makeStyles({
   },
 });
 
-const OtpInput = ({ handleChange, values: { otpInput }, formErrors }) => {
+const OtpInput = ({
+  handleChange,
+  values: { otpInput },
+  formErrors,
+  stepperHandleNext,
+}) => {
   const classes = useStyles();
-
+  // Check if all values are not empty or if there are some error
+  const isValid = otpInput.length > 0 && !formErrors.mobileInput;
   return (
     <>
       <TextField
@@ -31,6 +37,17 @@ const OtpInput = ({ handleChange, values: { otpInput }, formErrors }) => {
       />
       <Button className={classes.resendButton} variant="text">
         resend Otp
+      </Button>
+      <Button
+        fullWidth
+        className={classes.loginCardButton}
+        size="small"
+        variant="contained"
+        color="primary"
+        onClick={isValid ? stepperHandleNext : null}
+        disabled={!isValid}
+      >
+        Login
       </Button>
     </>
   );

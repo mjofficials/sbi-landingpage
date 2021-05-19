@@ -124,6 +124,11 @@ export default function LogInBtn() {
       maxLength: 4,
     },
   };
+
+  // Check if all values are not empty or if there are some error
+  // const isValid = mobileInput.length > 0 && !formErrors.mobileInput;
+  // const isValid = values.mobileInput.length > 0 || !formErrors.mobileInput;
+
   const [open, setOpen] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const [formValues, setFormValues] = useState(initialValues);
@@ -155,8 +160,6 @@ export default function LogInBtn() {
       [name]: error,
     });
   };
-  // Check if all values are not empty or if there are some error
-  // const isValid = mobileInput.length > 0 && !formErrors.mobileInput;
 
   const handleSteps = (step) => {
     switch (step) {
@@ -172,6 +175,7 @@ export default function LogInBtn() {
                 handleChange={handleChange}
                 formErrors={formErrors}
                 values={formValues}
+                stepperHandleNext={stepperHandleNext}
               />
             }
             formErrors={formErrors}
@@ -201,12 +205,13 @@ export default function LogInBtn() {
               stepperHandleBack={stepperHandleBack}
               DynamicloginCardTitle={"Verify OTP"}
               DynamicBtnText={"Verify"}
-              DynamicOtpMsg={`An OTP has been sent to your number xxx-xxx-xxx`}
+              DynamicOtpMsg={`An OTP has been sent to your number ${formValues.mobileInput}`}
               DynamicInput={
                 <OtpInput
                   handleChange={handleChange}
                   formErrors={formErrors}
                   values={formValues}
+                  stepperHandleNext={stepperHandleNext}
                 />
               }
             />
