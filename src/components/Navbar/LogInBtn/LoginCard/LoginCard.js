@@ -63,10 +63,12 @@ const LoginCard = ({
     DynamicBtnText,
     DynamicInput,
     stepperHandleNext,
-    stepperHandleBack,
+    // values: { mobileInput },
+    formErrors
 }) => {
     const classes = useStyles();
-
+    // Check if all values are not empty or if there are some error
+    // const isValid = mobileInput.length > 0 || !formErrors.mobileInput;
     return (
         <>
             <Card elevation={0} className={classes.loginCard}>
@@ -99,9 +101,21 @@ const LoginCard = ({
                         variant="contained"
                         color="primary"
                         onClick={stepperHandleNext}
+                    // disabled={!isValid}
                     >
                         {DynamicBtnText}
+                        {/* Login */}
                     </Button>
+                    {/* <Button
+                        fullWidth
+                        className={classes.loginCardButton}
+                        size="small"
+                        variant="contained"
+                        color="primary"
+                        onClick={stepperHandleNext}
+                    >
+                        Verify
+                    </Button> */}
                     <Typography
                         className={classes.loginCardBottomText}
                         variant="body2"

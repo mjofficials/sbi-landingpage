@@ -5,7 +5,6 @@ import {
   DialogActions,
   DialogContent,
   Grid,
-  TextField,
   Stepper,
   Step,
   StepLabel,
@@ -21,6 +20,9 @@ import CloseIcon from "@material-ui/icons/Close";
 import loginCardBgImg from "../../../assets/loginCardBgImg.png";
 import LoginCard from "./LoginCard/LoginCard";
 import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
+import MobileInput from "./MobileInput/MobileInput";
+import OtpInput from "./OtpInput/OtpInput";
+import formValidation from "../../HelperComponents/FormValidation/FormValidation";
 
 const useStyles = makeStyles((theme) => ({
   navButton: {
@@ -57,20 +59,10 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "flex-end",
   },
-  loginCardTextField: {
-    margin: "2rem 0",
-  },
-
   loginCardTextGrid: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-  },
-  resendButton: {
-    fontsize: "16px",
-    letterSpacing: "0.4px",
-    textTransform: "capitalize",
-    color: "#22A9E0",
   },
   LoginStepper: {
     padding: 0,
@@ -83,6 +75,13 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     marginTop: 30,
+  },
+  case1Grid: {
+    maxWidth: "300px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
   },
 }));
 
@@ -105,56 +104,59 @@ const theme = createMuiTheme({
 
 export default function LogInBtn() {
   const classes = useStyles();
+
   // STORED VALUES
   const labels = ["Login", "Verify"];
-  // const userDetail = {
-  //   mobileNumber: "",
-  // };
-  // const fieldsValidation = {
-  //   phone: {
-  //     error: "",
-  //     validate: "phone",
-  //     maxLength: 15,
-  //   },
-  // };
-
+  const initialValues = {
+    mobileInput: "",
+    otpInput: "",
+  };
+  const fieldsValidation = {
+    mobileInput: {
+      error: "",
+      validate: "mobileInput",
+      maxLength: 13,
+      minLength: 5,
+    },
+    otpInput: {
+      error: "",
+      validate: "otpInput",
+      maxLength: 4,
+    },
+  };
   const [open, setOpen] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
-  const [mobileInputValues, setMobileInputValues] = useState("");
-  const [otpInputValues, setOtpInputValues] = useState("");
-  // const [formErrors, setFormErrors] = useState({});
+  const [formValues, setFormValues] = useState(initialValues);
+  const [formErrors, setFormErrors] = useState({});
+
+  // Card open (or) close
+  const cardHandleClickOpen = () => setOpen(true);
+  const cardHandleClose = () => setOpen(false);
 
   // HANDLERS
   // Go back to prev step (or)) Proceed to next step
   const stepperHandleNext = () => setActiveStep((prev) => prev + 1);
   const stepperHandleBack = () => setActiveStep((prev) => prev - 1);
 
-  // Card open (or) close
-  const cardHandleClickOpen = () => setOpen(true);
-  const cardHandleClose = () => setOpen(false);
-
   // Handle form change
-  const LoginMobileNumberInputHandleChange = (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
     // Set values
-    const { value } = e.target;
-    setMobileInputValues(value);
+    setFormValues((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
 
-    let userMobile = e.target.value;
-    console.log("LoginMobileNumberInput:", userMobile);
+    // Set errors
 
-    // set errors
-    // const error = formValidation(name, value, fieldsValidation) || "";
-
-    // setFormErrors({
-    //   [name]: error
-    // });
+    const error = formValidation(name, value, fieldsValidation) || "";
+    setFormErrors({
+      [name]: error,
+    });
   };
-  const LoginOtpInputHandleChange = (e) => {
-    // Set values
-    setOtpInputValues(e.target.value);
-    let userOtp = e.target.value;
-    console.log("LoginOtpInput:", userOtp);
-  };
+  // Check if all values are not empty or if there are some error
+  // const isValid = mobileInput.length > 0 && !formErrors.mobileInput;
 
   const handleSteps = (step) => {
     switch (step) {
@@ -162,33 +164,24 @@ export default function LogInBtn() {
         return (
           <LoginCard
             stepperHandleNext={stepperHandleNext}
-            handleChange={LoginMobileNumberInputHandleChange}
             DynamicloginCardTitle={"Log in to rewards"}
             DynamicBtnText={"Login"}
-            // DynamicOtpMsg={""}
+            values={formValues}
             DynamicInput={
-              <LoginMobileNumberInput
-                LoginMobileNumberInputHandleChange={
-                  LoginMobileNumberInputHandleChange
-                }
-                mobileInputValues={mobileInputValues}
+              <MobileInput
+                handleChange={handleChange}
+                formErrors={formErrors}
+                values={formValues}
               />
             }
+            formErrors={formErrors}
+            // mobileInput={mobileInput}
           />
         );
       case 1:
         return (
           <>
-            <Grid
-              style={{
-                maxWidth: "300px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-                justifyContent: "flex-start",
-              }}
-              container
-            >
+            <Grid className={classes.case1Grid} container>
               <Button
                 onClick={stepperHandleBack}
                 variant="text"
@@ -208,11 +201,12 @@ export default function LogInBtn() {
               stepperHandleBack={stepperHandleBack}
               DynamicloginCardTitle={"Verify OTP"}
               DynamicBtnText={"Verify"}
-              DynamicOtpMsg={`An OTP has been sent to your number ${mobileInputValues}`}
+              DynamicOtpMsg={`An OTP has been sent to your number xxx-xxx-xxx`}
               DynamicInput={
-                <LoginOtpInput
-                  LoginOtpInputHandleChange={LoginOtpInputHandleChange}
-                  otpInputValues={otpInputValues}
+                <OtpInput
+                  handleChange={handleChange}
+                  formErrors={formErrors}
+                  values={formValues}
                 />
               }
             />
@@ -290,49 +284,6 @@ export default function LogInBtn() {
     </MuiThemeProvider>
   );
 }
-const LoginMobileNumberInput = ({
-  LoginMobileNumberInputHandleChange,
-  mobileInputValues,
-}) => {
-  const classes = useStyles();
-  return (
-    <>
-      <TextField
-        value={mobileInputValues}
-        onChange={LoginMobileNumberInputHandleChange}
-        className={classes.loginCardTextField}
-        size="small"
-        // error
-        // helperText="Incorrect entry."
-        label="Enter mobile no./username"
-        variant="outlined"
-        // id="emaiName"
-        // id="outlined-error-helper-text"
-        // label="Error"
-      />
-    </>
-  );
-};
-
-const LoginOtpInput = ({ LoginOtpInputHandleChange, otpInputValues }) => {
-  const classes = useStyles();
-  return (
-    <>
-      <TextField
-        value={otpInputValues}
-        onChange={LoginOtpInputHandleChange}
-        size="small"
-        id="otp"
-        label="OTP"
-        variant="outlined"
-      />
-      <Button className={classes.resendButton} variant="text">
-        resend Otp
-      </Button>
-    </>
-  );
-};
-
 const Success = () => {
   const classes = useStyles();
   return (

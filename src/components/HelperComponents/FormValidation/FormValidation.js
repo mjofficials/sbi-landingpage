@@ -1,6 +1,9 @@
 const isText = RegExp(/^[A-Z ]+$/i);
 const isEmail = RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i);
-const isPhone = RegExp(/^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4,6})$/); // us
+// const isPhone = RegExp(/^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4,6})$/); // us
+// const isPhone = RegExp(/^[0-9a-zA-Z]+$/);
+const isPhone = RegExp(/^([+][9][1]|[9][1]|[0]){0,1}([7-9]{1})([0-9]{9})$/);
+const isOtp = RegExp(/^\d{4}$/gm);
 const isZip = RegExp(/^[0-9]{5}([- /]?[0-9]{4})?$/); // us
 const isNumber = RegExp(/^\d+$/);
 
@@ -27,9 +30,14 @@ export default function formValidation(name, value, schema) {
             if (!isEmail.test(value)) error = "Please enter a valid email";
             break;
 
-        case "phone":
+        case "mobileInput":
             if (!isPhone.test(value))
-                error = "Please enter a valid phone number. i.e: xxx-xxx-xxxx";
+                error = "Please enter a valid mobile no./username";
+            break;
+
+        case "otpInput":
+            if (!isOtp.test(value))
+                error = "Please enter 4 digit valid OTP";
             break;
 
         case "zip":
