@@ -18,7 +18,10 @@ import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined"
 import CloseIcon from "@material-ui/icons/Close";
 import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 import loginCardBgImg from "../../../assets/loginCardBgImg.png";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import RegisterCard from "./RegisterCard/RegisterCard";
+import FillDetails from "./FillDetails/FillDetails";
+import OtpAuth from "./OtpAuth/OtpAuth";
 
 const useStyles = makeStyles((theme) => ({
   registerButton: {
@@ -131,25 +134,37 @@ export default function RegisterBtn() {
             DynamicRegisterCardTitle={"Register"}
             DynamicSubTitleMsg={"Fill in your details to continue"}
             stepperHandleNext={stepperHandleNext}
+            DynamicInput={<FillDetails />}
           />
         )
 
       case 1:
         return (
-          <RegisterCard
-            DynamicRegisterCardTitle={"step 2"}
-            DynamicSubTitleMsg={"Fill in your details to continue"}
-            stepperHandleNext={stepperHandleNext}
-            stepperHandleBack={stepperHandleBack} />
+          <>
 
+            <RegisterCard
+              DynamicRegisterCardTitle={"step 2"}
+              DynamicSubTitleMsg={"Fill in your details to continue"}
+              stepperHandleNext={stepperHandleNext}
+              stepperHandleBack={stepperHandleBack}
+              DynamicInput={<OtpAuth
+                stepperHandleBack={stepperHandleBack}
+              />}
+            />
+          </>
         )
       case 2:
         return (
+
+
           <RegisterCard
             DynamicRegisterCardTitle={"step 3"}
             DynamicSubTitleMsg={"Fill in your details to continue"}
             stepperHandleNext={stepperHandleNext}
-            stepperHandleBack={stepperHandleBack} />
+            stepperHandleBack={stepperHandleBack}
+
+          />
+
 
         )
       default:
@@ -189,6 +204,19 @@ export default function RegisterBtn() {
                 padding: 0,
               }}
             >
+              <Button
+                onClick={stepperHandleBack}
+                variant="text"
+                color="default"
+                startIcon={
+                  <ArrowBackIcon
+                    style={{
+                      color: "#1B9DF2",
+                      fontSize: "1.5rem",
+                    }}
+                  />
+                }
+              />
               <Button
                 style={{
                   paddingBottom: "0.5rem",

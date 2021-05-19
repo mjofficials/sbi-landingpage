@@ -64,7 +64,7 @@ const RegisterCard = ({
   DynamicRegisterCardTitle,
   DynamicSubTitleMsg,
   stepperHandleNext,
-  stepperHandleBack,
+  DynamicInput,
 }) => {
   const classes = useStyles();
 
@@ -89,7 +89,7 @@ const RegisterCard = ({
             {DynamicSubTitleMsg}
           </Typography>
           <Grid className={classes.registerCardTextGrid} container>
-            {/* {DynamicInput} */}
+            {DynamicInput}
           </Grid>
         </CardContent>
         <CardActions className={classes.registerCardAction}>
@@ -101,19 +101,9 @@ const RegisterCard = ({
             color="primary"
             onClick={stepperHandleNext}
             // disabled={!isValid}
+            style={{ width: "230px" }}
           >
             Login
-          </Button>
-          <Button
-            fullWidth
-            className={classes.registerCardButton}
-            size="small"
-            variant="contained"
-            color="secondary"
-            onClick={stepperHandleBack}
-            // disabled={!isValid}
-          >
-            back
           </Button>
           <Typography
             className={classes.registerCardBottomText}
